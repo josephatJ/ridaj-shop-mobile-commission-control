@@ -13,13 +13,13 @@ App for managing profit divisions
 Clone repository
 
 ```bash
- git clone
+ git clone https://github.com/josephatJ/ridaj-shop-mobile-commission-control
 ```
 
 Navigate to application root folder
 
 ```bash
-cd app
+cd ridaj-shop-mobile-commission-control
 ```
 
 Install all required dependencies for the app
@@ -32,7 +32,7 @@ npm install
 
 To start development server
 
-`npm start`
+`npm start` Make sure you have the backend provided by loopback API at
 
 Navigate to [http://localhost:4200](http://localhost:4200).
 
