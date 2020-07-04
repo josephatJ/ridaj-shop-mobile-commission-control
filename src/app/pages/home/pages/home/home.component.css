@@ -9,3 +9,13 @@
 .example-container > * {
   width: 100%;
 }
+
+.header {
+  padding: 20px 5px 0 5px;
+}
+
+.summary-commission h3 {
+  color: #ea7725;
+  font-size: 50px;
+  text-align: center;
+}

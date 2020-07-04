@@ -43,10 +43,13 @@
     "core-js": "^3.6.5",
     "d2": "^31.8.1",
     "dexie": "^3.0.1",
+    "express": "^4.17.1",
+    "material-design-icons": "^3.0.1",
     "ng2-dragula": "^2.1.1",
     "ngx-color-picker": "^9.1.0",
     "ngx-pagination": "^5.0.0",
     "rxjs": "~6.5.5",
+    "sequelize-typescript": "^1.1.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
   },

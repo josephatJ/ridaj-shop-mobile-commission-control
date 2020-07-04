@@ -1,0 +1,33 @@
+<div class="container">
+  <app-header></app-header>
+  <div class="row">
+    <div class="col-9">
+      <div *ngIf="commissionsLoadedState$ | async">
+        <div class="row">
+          <div class="col-md-6">
+            <h2>Kamisheni za {{ (customer$ | async).phone }}</h2>
+          </div>
+          <div class="col-md-6">
+            <button
+              style="float: right"
+              mat-stroked-button
+              routerLink="/customers"
+            >
+              Wateja
+            </button>
+          </div>
+        </div>
+        <app-commissions-list
+          [commissions]="customerCommissions$ | async"
+          [customerId]="customerId"
+        ></app-commissions-list>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="description">
+        <h3><b>Faidika</b>, ukiweka au kutoa hela hapa.</h3>
+        <h3>Pata <b>Gawio</b> kutoka kwenye kamisheni.</h3>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,4 @@
-import { UserEffects } from './user.effects';
-import { SystemInfoEffects } from './system-info.effects';
-import { RouterEffects } from './router.effects';
+import { CustomersEffects } from './customers.effects';
+import { CommissionsEffects } from './commissions.effects';
 
-export const effects: any[] = [UserEffects, SystemInfoEffects, RouterEffects];
+export const effects: any[] = [CustomersEffects, CommissionsEffects];

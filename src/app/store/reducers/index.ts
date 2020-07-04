@@ -1,30 +1,31 @@
-import { routerReducer, RouterReducerState } from '@ngrx/router-store';
 import { ActionReducerMap, MetaReducer } from '@ngrx/store';
-import { storeFreeze } from 'ngrx-store-freeze';
-
+import { RouterReducerState, routerReducer } from '@ngrx/router-store';
 import { environment } from '../../../environments/environment';
-import { SystemInfoState } from '../states/system-info.state';
-import { UserState } from '../states/user.state';
-import { systemInfoReducer } from './system-info.reducer';
-import { userReducer } from './user.reducer';
+import { CustomersState } from '../states/customers.states';
+import { customersReducer } from './customers.reducer';
+import { CommissionsState } from '../states/commissions.states';
+import { commissionsReducer } from './commissions.reducer';
 
+/**
+ * Root state interface
+ */
 export interface State {
-  user: UserState;
-  systemInfo: SystemInfoState;
-  router: RouterReducerState;
+  customers: CustomersState;
+  commissions: CommissionsState;
 }
 
 export const reducers: ActionReducerMap<State> = {
-  user: userReducer,
-  systemInfo: systemInfoReducer,
-  router: routerReducer
+  customers: customersReducer,
+  commissions: commissionsReducer
 };
 
 export const metaReducers: MetaReducer<State>[] = !environment.production
-  ? [storeFreeze]
+  ? []
   : [];
 
 /**
  * Root state selector
+ * @param {State} state
+ * @returns {State} state
  */
 export const getRootState = (state: State) => state;

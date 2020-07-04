@@ -8,7 +8,8 @@ import { NgxDhis2MenuModule } from '@iapps/ngx-dhis2-menu';
 import { EffectsModule } from '@ngrx/effects';
 import {
   RouterStateSerializer,
-  StoreRouterConnectingModule, DefaultRouterStateSerializer
+  StoreRouterConnectingModule,
+  DefaultRouterStateSerializer
 } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -37,19 +38,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot(effects),
-    NgxDhis2HttpClientModule.forRoot({
-      version: 1,
-      namespace: 'iapps',
-      models: {
-        organisationUnits: 'id,level',
-        organisationUnitLevels: 'id,level',
-        organisationUnitGroups: 'id'
-      }
-    }),
-    /**
-     * Menu  module
-     */
-    NgxDhis2MenuModule,
 
     /**
      * Translation module
@@ -65,7 +53,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     /**
      * @ngrx/router-store keeps router state up-to-date in the store
      */
-    StoreRouterConnectingModule.forRoot({ serializer: DefaultRouterStateSerializer }),
+    StoreRouterConnectingModule.forRoot({
+      serializer: DefaultRouterStateSerializer
+    }),
 
     !environment.production ? StoreDevtoolsModule.instrument() : [],
 

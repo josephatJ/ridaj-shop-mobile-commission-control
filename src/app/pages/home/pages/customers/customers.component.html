@@ -1,0 +1,21 @@
+<div class="container">
+  <app-header></app-header>
+  <div class="row">
+    <div class="col-9">
+      <div *ngIf="(customersLoadedState$ | async) && (customers$ | async)">
+        <app-customers-list
+          [customers]="customers$ | async"
+        ></app-customers-list>
+      </div>
+      <div *ngIf="!(customersLoadedState$ | async) || !(customers$ | async)">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="description">
+        <h3><b>Faidika</b>, ukiweka au kutoa hela hapa.</h3>
+        <h3>Pata <b>Gawio</b> kutoka kwenye kamisheni.</h3>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Title } from '@angular/platform-browser';
-import { Fn } from '@iapps/function-analytics';
+import { Store } from '@ngrx/store';
+import { State } from './store/reducers';
+import { loadCustomers, loadCommissions } from './store/actions';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +13,8 @@ import { Fn } from '@iapps/function-analytics';
 export class AppComponent {
   constructor(
     private translate: TranslateService,
-    private titleService: Title
+    private titleService: Title,
+    private store: Store<State>
   ) {
     // this language will be used as a fallback when a translation isn't found in the current language
     this.translate.setDefaultLang('en');
@@ -20,13 +23,10 @@ export class AppComponent {
     this.translate.use('en');
 
     // Set application title
-    this.setTitle('Seed application');
+    this.setTitle('Mobile Money');
 
-    if (Fn) {
-      Fn.init({
-        baseUrl: '../../../'
-      });
-    }
+    this.store.dispatch(loadCustomers());
+    this.store.dispatch(loadCommissions());
   }
 
   public setTitle(newTitle: string) {
