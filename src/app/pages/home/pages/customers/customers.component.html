@@ -5,6 +5,7 @@
       <div *ngIf="(customersLoadedState$ | async) && (customers$ | async)">
         <app-customers-list
           [customers]="customers$ | async"
+          [maxIdForCustomers]="maxIdForCustomers$ | async"
         ></app-customers-list>
       </div>
       <div *ngIf="!(customersLoadedState$ | async) || !(customers$ | async)">

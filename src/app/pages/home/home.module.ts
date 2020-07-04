@@ -11,9 +11,25 @@ import { CustomerComponent } from './pages/customer/customer.component';
 import { CommissionsListComponent } from './components/commissions-list/commissions-list.component';
 import { NewCustomerComponent } from './pages/new-customer/new-customer.component';
 import { NewCommissionComponent } from './pages/new-commission/new-commission.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [...pages, CustomersComponent, HeaderComponent, CustomersListComponent, CustomerComponent, CommissionsListComponent, NewCustomerComponent, NewCommissionComponent],
-  imports: [CommonModule, SharedModule, HomeRoutingModule]
+  declarations: [
+    ...pages,
+    CustomersComponent,
+    HeaderComponent,
+    CustomersListComponent,
+    CustomerComponent,
+    CommissionsListComponent,
+    NewCustomerComponent,
+    NewCommissionComponent
+  ],
+  imports: [
+    CommonModule,
+    SharedModule,
+    HomeRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
+  ]
 })
 export class HomeModule {}

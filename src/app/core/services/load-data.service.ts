@@ -19,4 +19,9 @@ export class LoadDataService {
   getCommissions(): Observable<any> {
     return this.httpClient.get('../../../api/commissions');
   }
+
+  saveCustomer(data): Observable<any> {
+    console.log(data);
+    return this.httpClient.post('../../../api/customers', data);
+  }
 }

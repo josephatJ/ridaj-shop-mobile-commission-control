@@ -25,7 +25,7 @@ const routes: Routes = [
     component: CustomerComponent
   },
   {
-    path: 'new/customer',
+    path: 'new/customer/:id',
     component: NewCustomerComponent
   },
   {

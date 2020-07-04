@@ -3,8 +3,54 @@
   <div class="row">
     <div class="col-9">
       <div class="row">
-        <div class="col-md-6">
-          <p>New customer</p>
+        <div class="col-md-6" novalidate>
+          <h3>Mteja Mpya</h3>
+          <form
+            [formGroup]="customerFormGroup"
+            (ngSubmit)="onSubmit(customerFormGroup.value)"
+          >
+            <mat-form-field>
+              <mat-label>Simu</mat-label>
+              <input
+                minlength="10"
+                maxlength="10"
+                matInput
+                formControlName="phone"
+                placeholder="0766 460 759"
+                required
+              />
+              <mat-error *ngIf="!phone.valid && phone.touched">
+                {{ errorAlert }}
+              </mat-error>
+              <!-- <mat-error *ngFor="let validation of validation_messages">
+                <mat-error
+                  class="error-message"
+                  *ngIf="
+                    customerFormGroup.get('phone').hasError(validation.type) &&
+                    (customerFormGroup.get('phone').dirty ||
+                      customerFormGroup.get('phone').touched ||
+                      !customerFormGroup.get('phone').valid)
+                  "
+                >
+                  {{ validation.message }}
+                </mat-error>
+              </mat-error> -->
+            </mat-form-field>
+            <button
+              style="margin-left: 20px"
+              [disabled]="customerFormGroup.value.phone == ''"
+              mat-button
+              type="submit"
+              *ngIf="customerFormGroup.value"
+            >
+              Save
+            </button>
+          </form>
+          <!-- <div>
+            <button mat-button (click)="Save(customerFormGroup)">
+              Save
+            </button>
+          </div> -->
         </div>
         <div class="col-md-6">
           <button

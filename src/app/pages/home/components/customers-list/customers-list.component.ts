@@ -11,6 +11,7 @@ import { formatCustomersList } from '../../helpers';
 export class CustomersListComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @Input() customers: any;
+  @Input() maxIdForCustomers: number;
   displayedColumns: string[] = ['no', 'phone', 'provider', 'status'];
   dataSource: any;
   constructor() {}

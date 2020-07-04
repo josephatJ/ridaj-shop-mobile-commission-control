@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 
 export function formatCustomersList(customers) {
   let list = [];
-  _.each(customers, (customer, index) => {
+  _.each(_.orderBy(customers, ['created'], ['desc']), (customer, index) => {
     list.push({
       no: index + 1,
       phone: customer.phone,
