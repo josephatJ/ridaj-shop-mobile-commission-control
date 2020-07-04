@@ -1,10 +1,10 @@
 {
-  "name": "ngx-seed-app",
+  "name": "ridaj-shop-mobile-commission-control",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --aot && cd dist/ngx-seed-app && zip -r -D ngx-seed-app.zip .",
+    "build": "ng build --prod --aot && cd dist/ridaj-shop-mobile-commission-control && zip -r -D ridaj-shop-mobile-commission-control.zip .",
     "test": "ng test",
     "test:travis": "ng test -- --no-watch --no-progress --code-coverage --browsers=ChromeHeadlessCI",
     "lint": "ng lint",
