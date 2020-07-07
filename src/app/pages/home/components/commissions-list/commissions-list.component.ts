@@ -12,6 +12,7 @@ export class CommissionsListComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @Input() commissions: any;
   @Input() customerId: string;
+  @Input() maxCommissionId: any;
   displayedColumns: string[] = [
     'no',
     'created',

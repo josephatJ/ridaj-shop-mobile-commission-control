@@ -31,7 +31,6 @@ export function formatCommissions(commissions) {
       created: formatDateYYMMDD(commission.created)
     });
   });
-  console.log('list', list);
   return list;
 }
 

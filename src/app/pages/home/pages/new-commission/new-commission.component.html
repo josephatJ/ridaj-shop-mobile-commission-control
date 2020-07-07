@@ -22,26 +22,45 @@
               <mat-error *ngIf="!commission.valid && commission.touched">
                 {{ errorAlert }}
               </mat-error>
-              <!-- <mat-error *ngFor="let validation of validation_messages">
-                          <mat-error
-                            class="error-message"
-                            *ngIf="
-                              customerFormGroup.get('phone').hasError(validation.type) &&
-                              (customerFormGroup.get('phone').dirty ||
-                                customerFormGroup.get('phone').touched ||
-                                !customerFormGroup.get('phone').valid)
-                            "
-                          >
-                            {{ validation.message }}
-                          </mat-error>
-                        </mat-error> -->
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Kamisheni yako (10%)</mat-label>
+              <input
+                type="number"
+                min="0"
+                matInput
+                formControlName="customercommission"
+                placeholder="200"
+                required
+                [value]="commissionFormGroup.value.commission * 0.01"
+              />
+              <!-- <mat-error *ngIf="!customercommission.valid && customercommission.touched">
+                {{ errorAlert }}
+              </mat-error> -->
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Fedha iliyowekwa/kutolewa</mat-label>
+              <input
+                type="number"
+                min="100"
+                matInput
+                formControlName="transaction"
+                placeholder="2000"
+                required
+              />
+              <mat-error *ngIf="!transaction.valid && transaction.touched">
+                {{ errorAlert }}
+              </mat-error>
             </mat-form-field>
             <button
-              style="margin-left: 20px"
-              [disabled]="commissionFormGroup.value.commission == ''"
+              style="border: solid 1px #eee"
+              [disabled]="
+                commissionFormGroup.value.commission == '' ||
+                commissionFormGroup.value.transaction == ''
+              "
               mat-button
               type="submit"
-              *ngIf="commissionFormGroup.value"
             >
               Save
             </button>

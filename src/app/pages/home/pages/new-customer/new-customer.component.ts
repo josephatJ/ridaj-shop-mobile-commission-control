@@ -78,7 +78,8 @@ export class NewCustomerComponent implements OnInit {
     } else if (
       referenceCode == '065' ||
       referenceCode == '071' ||
-      referenceCode == '064'
+      referenceCode == '064' ||
+      referenceCode == '067'
     ) {
       return 'Tigo';
     } else if (

@@ -21,7 +21,10 @@ export class LoadDataService {
   }
 
   saveCustomer(data): Observable<any> {
-    console.log(data);
     return this.httpClient.post('../../../api/customers', data);
+  }
+
+  saveCommission(data): Observable<any> {
+    return this.httpClient.post('../../../api/commissions', data);
   }
 }

@@ -29,7 +29,7 @@ const routes: Routes = [
     component: NewCustomerComponent
   },
   {
-    path: 'new/commission/:id',
+    path: 'new/commission/:id/:commId',
     component: NewCommissionComponent
   }
 ];

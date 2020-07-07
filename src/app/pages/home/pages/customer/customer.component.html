@@ -4,10 +4,19 @@
     <div class="col-9">
       <div *ngIf="commissionsLoadedState$ | async">
         <div class="row">
-          <div class="col-md-6">
-            <h2>Kamisheni za {{ (customer$ | async).phone }}</h2>
+          <div class="col-md-9">
+            <h2 *ngIf="(customer$ | async) && (customer$ | async).phone">
+              Kamisheni za
+              <app-phone-number
+                [phoneNumber]="(customer$ | async).phone"
+              ></app-phone-number>
+              =
+              <b style="color: #ea7725"
+                >Tshs. {{ totalCustomerCommissions$ | async }}</b
+              >
+            </h2>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-3">
             <button
               style="float: right"
               mat-stroked-button
@@ -20,6 +29,7 @@
         <app-commissions-list
           [commissions]="customerCommissions$ | async"
           [customerId]="customerId"
+          [maxCommissionId]="maxCommissionId$ | async"
         ></app-commissions-list>
       </div>
     </div>

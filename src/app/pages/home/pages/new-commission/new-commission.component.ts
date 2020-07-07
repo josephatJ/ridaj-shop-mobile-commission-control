@@ -9,6 +9,7 @@ import {
 import { LoadDataService } from 'src/app/core';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/store/reducers';
+import { loadCommissions } from 'src/app/store/actions';
 
 @Component({
   selector: 'app-new-commission',
@@ -16,9 +17,10 @@ import { State } from 'src/app/store/reducers';
   styleUrls: ['./new-commission.component.css']
 })
 export class NewCommissionComponent implements OnInit {
-  customerId: string;
-  errorAlert: string = '';
+  customerId: number;
+  errorAlert: string = 'Inatakiwa';
   commissionFormGroup: FormGroup;
+  maxCommissionId: number;
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
@@ -29,10 +31,12 @@ export class NewCommissionComponent implements OnInit {
 
   ngOnInit(): void {
     let today = new Date();
-    this.customerId = this.route.snapshot.params['id'];
+    this.maxCommissionId = Number(this.route.snapshot.params['commId']);
+    this.customerId = Number(this.route.snapshot.params['id']);
     this.commissionFormGroup = this.formBuilder.group({
+      commissionid: [this.maxCommissionId + 1],
       customerid: [this.customerId],
-      commission: ['', Validators.required],
+      commission: [0, Validators.required],
       customercommission: [''],
       percentused: [10],
       transaction: ['', Validators.required],
@@ -41,10 +45,19 @@ export class NewCommissionComponent implements OnInit {
   }
 
   get commission() {
+    this.commissionFormGroup.value.customercommission =
+      this.commissionFormGroup.value.commission * 0.01;
     return this.commissionFormGroup.get('commission') as FormControl;
   }
 
+  get transaction() {
+    return this.commissionFormGroup.get('transaction') as FormControl;
+  }
+
   onSubmit(data) {
-    console.log('data', data);
+    this.dataService.saveCommission(data).subscribe(response => {
+      this.store.dispatch(loadCommissions());
+      this.router.navigate(['customer/' + this.customerId]);
+    });
   }
 }

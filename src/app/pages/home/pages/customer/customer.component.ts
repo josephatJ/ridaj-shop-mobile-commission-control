@@ -7,7 +7,9 @@ import { getCustomerById } from 'src/app/store/selectors';
 import {
   getCommissionsByCustomerId,
   getAllCommissions,
-  getCommissionsLoadedState
+  getCommissionsLoadedState,
+  getMaxCommissionId,
+  getTotalCustomerCommissions
 } from 'src/app/store/selectors/commissions.selectors';
 
 @Component({
@@ -20,6 +22,8 @@ export class CustomerComponent implements OnInit {
   customerCommissions$: Observable<any>;
   commissionsLoadedState$: Observable<boolean>;
   customerId: string;
+  maxCommissionId$: Observable<any>;
+  totalCustomerCommissions$: Observable<number>;
   constructor(private route: ActivatedRoute, private store: Store<State>) {}
 
   ngOnInit(): void {
@@ -32,5 +36,10 @@ export class CustomerComponent implements OnInit {
     this.customerCommissions$ = this.store.select(getCommissionsByCustomerId, {
       id: this.route.snapshot.params['id']
     });
+    this.maxCommissionId$ = this.store.select(getMaxCommissionId);
+    this.totalCustomerCommissions$ = this.store.select(
+      getTotalCustomerCommissions,
+      { id: Number(this.customerId) }
+    );
   }
 }

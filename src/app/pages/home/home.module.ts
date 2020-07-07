@@ -12,6 +12,7 @@ import { CommissionsListComponent } from './components/commissions-list/commissi
 import { NewCustomerComponent } from './pages/new-customer/new-customer.component';
 import { NewCommissionComponent } from './pages/new-commission/new-commission.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { PhoneNumberComponent } from './components/phone-number/phone-number.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     CustomerComponent,
     CommissionsListComponent,
     NewCustomerComponent,
-    NewCommissionComponent
+    NewCommissionComponent,
+    PhoneNumberComponent
   ],
   imports: [
     CommonModule,
