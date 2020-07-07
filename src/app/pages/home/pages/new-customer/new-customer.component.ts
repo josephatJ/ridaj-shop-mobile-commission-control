@@ -5,7 +5,6 @@ import {
   Validators,
   FormControl
 } from '@angular/forms';
-import { formatDateYYMMDD } from '../../helpers';
 import { LoadDataService } from 'src/app/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -57,7 +56,7 @@ export class NewCustomerComponent implements OnInit {
     let formattedData = {
       customerid: Number(this.route.snapshot.params['id']),
       phone: data.phone,
-      provider: 'VodaCom',
+      provider: this.deduceServiceProvider(data.phone),
       active: true,
       created: data.created
     };
@@ -66,6 +65,32 @@ export class NewCustomerComponent implements OnInit {
       this.store.dispatch(loadCustomers());
       this.router.navigate(['customers']);
     });
+  }
+
+  deduceServiceProvider(phone) {
+    const referenceCode = phone.toString().substring(0, 3);
+    if (
+      referenceCode == '075' ||
+      referenceCode == '074' ||
+      referenceCode == '076'
+    ) {
+      return 'VodaCom';
+    } else if (
+      referenceCode == '065' ||
+      referenceCode == '071' ||
+      referenceCode == '064'
+    ) {
+      return 'Tigo';
+    } else if (
+      referenceCode == '078' ||
+      referenceCode == '079' ||
+      referenceCode == '068' ||
+      referenceCode == '069'
+    ) {
+      return 'Airtel';
+    } else {
+      return 'Halotel';
+    }
   }
 
   keyPress(event: any) {

@@ -4,7 +4,48 @@
     <div class="col-9">
       <div class="row">
         <div class="col-md-6">
-          <p>New commission</p>
+          <h3>Kamisheni Mpya</h3>
+          <form
+            [formGroup]="commissionFormGroup"
+            (ngSubmit)="onSubmit(commissionFormGroup.value)"
+          >
+            <mat-form-field>
+              <mat-label>Kamisheni</mat-label>
+              <input
+                type="number"
+                min="0"
+                matInput
+                formControlName="commission"
+                placeholder="200"
+                required
+              />
+              <mat-error *ngIf="!commission.valid && commission.touched">
+                {{ errorAlert }}
+              </mat-error>
+              <!-- <mat-error *ngFor="let validation of validation_messages">
+                          <mat-error
+                            class="error-message"
+                            *ngIf="
+                              customerFormGroup.get('phone').hasError(validation.type) &&
+                              (customerFormGroup.get('phone').dirty ||
+                                customerFormGroup.get('phone').touched ||
+                                !customerFormGroup.get('phone').valid)
+                            "
+                          >
+                            {{ validation.message }}
+                          </mat-error>
+                        </mat-error> -->
+            </mat-form-field>
+            <button
+              style="margin-left: 20px"
+              [disabled]="commissionFormGroup.value.commission == ''"
+              mat-button
+              type="submit"
+              *ngIf="commissionFormGroup.value"
+            >
+              Save
+            </button>
+          </form>
         </div>
         <div class="col-md-6">
           <button
